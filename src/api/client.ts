@@ -12,16 +12,16 @@ const apiClient = axios.create({
 
 export const matchApi = {
     getAllMatches: async (): Promise<Match[]> => {
-        const response = await apiClient.get<Match[]>('/matches');
-        return response.data;
+        const response = await apiClient.get<{ data: { matches: Match[] } }>('/matches');
+        return response.data.data.matches;
     },
     getLiveMatches: async (): Promise<Match[]> => {
-        const response = await apiClient.get<Match[]>('/matches/live');
-        return response.data;
+        const response = await apiClient.get<{ data: { matches: Match[] } }>('/matches/live');
+        return response.data.data.matches;
     },
     getMatchById: async (id: string): Promise<Match> => {
-        const response = await apiClient.get<Match>(`/matches/${id}`);
-        return response.data;
+        const response = await apiClient.get<{ data: Match }>(`/matches/${id}`);
+        return response.data.data;
     },
 };
 

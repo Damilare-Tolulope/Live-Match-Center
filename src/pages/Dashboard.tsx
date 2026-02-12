@@ -15,7 +15,7 @@ const Dashboard = () => {
         const fetchMatches = async () => {
             try {
                 const data = await matchApi.getAllMatches();
-                setMatches(data.data.matches);
+                setMatches(data);
             } catch (err) {
                 console.error("Failed to fetch matches:", err);
                 setError('Failed to load matches.');

@@ -1,3 +1,7 @@
+export interface ApiResponse<T> {
+    data: T;
+}
+
 export type MatchStatus =
     | 'NOT_STARTED'
     | 'FIRST_HALF'

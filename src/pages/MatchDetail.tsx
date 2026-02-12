@@ -26,7 +26,7 @@ const MatchDetail = () => {
         const fetchMatchData = async () => {
             try {
                 const data = await matchApi.getMatchById(id);
-                setMatch(data.data);
+                setMatch(data);
                 // Simulate fetching initial events/stats if API supported it
                 // For now, we rely on potential socket initial payload or separate endpoints if they existed
                 // But per requirements, we just have /api/matches/:id. 
