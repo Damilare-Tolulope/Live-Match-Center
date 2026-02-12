@@ -102,15 +102,15 @@ const Chat: React.FC<ChatProps> = ({ matchId }) => {
 
     if (!isJoined) {
         return (
-            <div className="bg-gray-800 rounded-lg p-6 max-w-md mx-auto border border-gray-700 text-center">
-                <h3 className="text-xl font-bold text-white mb-4">Join Live Chat</h3>
+            <div className="bg-white rounded-lg p-6 max-w-md mx-auto border border-slate-200 text-center shadow-sm">
+                <h3 className="text-xl font-bold text-slate-900 mb-4">Join Live Chat</h3>
                 <form onSubmit={handleJoin} className="space-y-4">
                     <input
                         type="text"
                         placeholder="Enter your username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        className="w-full px-4 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 bg-slate-50 text-slate-900 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required
                     />
                     <button
@@ -125,7 +125,7 @@ const Chat: React.FC<ChatProps> = ({ matchId }) => {
     }
 
     return (
-        <div className="bg-gray-800 rounded-lg border border-gray-700 h-[500px] flex flex-col">
+        <div className="bg-white rounded-lg border border-slate-200 h-[500px] flex flex-col shadow-sm">
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
                 {messages.map((msg, idx) => {
                     const isMe = msg.username === username;
@@ -133,9 +133,9 @@ const Chat: React.FC<ChatProps> = ({ matchId }) => {
                         <div key={idx} className={clsx("flex flex-col", isMe ? "items-end" : "items-start")}>
                             <div className={clsx(
                                 "max-w-[80%] rounded-lg px-4 py-2",
-                                isMe ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200"
+                                isMe ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-800"
                             )}>
-                                {!isMe && <div className="text-xs font-bold text-gray-400 mb-1">{msg.username}</div>}
+                                {!isMe && <div className="text-xs font-bold text-slate-500 mb-1">{msg.username}</div>}
                                 <div>{msg.message}</div>
                             </div>
                             {/* <div className="text-xs text-gray-500 mt-1">{new Date(msg.timestamp).toLocaleTimeString()}</div> */}
@@ -146,12 +146,12 @@ const Chat: React.FC<ChatProps> = ({ matchId }) => {
             </div>
 
             {typingUsers.length > 0 && (
-                <div className="px-4 py-2 text-xs text-gray-400 italic">
+                <div className="px-4 py-2 text-xs text-slate-500 italic">
                     {typingUsers.join(', ')} is typing...
                 </div>
             )}
 
-            <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-700 bg-gray-900 rounded-b-lg">
+            <form onSubmit={handleSendMessage} className="p-4 border-t border-slate-200 bg-slate-50 rounded-b-lg">
                 <div className="flex gap-2">
                     <input
                         type="text"
@@ -162,7 +162,7 @@ const Chat: React.FC<ChatProps> = ({ matchId }) => {
                         }}
                         placeholder={isConnected ? "Type a message..." : "Connecting..."}
                         disabled={!isConnected}
-                        className="flex-1 px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                        className="flex-1 px-4 py-2 bg-white text-slate-900 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
                     />
                     <button
                         type="submit"

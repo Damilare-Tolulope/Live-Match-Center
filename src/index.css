@@ -2,19 +2,22 @@
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
-  --color-app-bg: #0f172a;
-  /* Slate 900 */
-  --color-card-bg: #1e293b;
-  /* Slate 800 */
-  --color-card-hover: #334155;
-  /* Slate 700 */
+  --color-app-bg: #f8fafc;
+  /* Slate 50 */
+  --color-card-bg: #ffffff;
+  /* White */
+  --color-card-hover: #f1f5f9;
+  /* Slate 100 */
   --color-primary: #3b82f6;
   /* Blue 500 */
+  --color-text-primary: #0f172a;
+  /* Slate 900 */
+  --color-text-secondary: #64748b;
+  /* Slate 500 */
 }
 
 body {
   font-family: var(--font-sans);
   background-color: var(--color-app-bg);
-  color: #f8fafc;
-  /* Slate 50 */
+  color: var(--color-text-primary);
 }

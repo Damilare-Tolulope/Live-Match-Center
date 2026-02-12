@@ -78,47 +78,47 @@ const MatchDetail = () => {
         };
     }, [socket, id]);
 
-    if (loading) return <div className="min-h-screen bg-[#0f172a] flex items-center justify-center text-blue-500">Loading match details...</div>;
-    if (!match) return <div className="min-h-screen bg-[#0f172a] flex items-center justify-center text-red-500">Match not found</div>;
+    if (loading) return <div className="min-h-screen bg-slate-50 flex items-center justify-center text-blue-600">Loading match details...</div>;
+    if (!match) return <div className="min-h-screen bg-slate-50 flex items-center justify-center text-red-500">Match not found</div>;
 
     const isLive = match.status === 'FIRST_HALF' || match.status === 'SECOND_HALF';
 
     return (
-        <div className="min-h-screen bg-[#0f172a] text-slate-100 pb-20">
+        <div className="min-h-screen bg-slate-50 text-slate-900 pb-20">
             {/* Navigation & Header */}
-            <div className="relative bg-[#1e293b] border-b border-gray-800 pb-8 pt-6">
+            <div className="relative bg-white border-b border-slate-200 pb-8 pt-6">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <button
                         onClick={() => navigate('/')}
-                        className="flex items-center text-gray-400 hover:text-white mb-6 transition-colors font-medium text-sm group"
+                        className="flex items-center text-slate-500 hover:text-slate-900 mb-6 transition-colors font-medium text-sm group"
                     >
                         <span className="mr-1 group-hover:-translate-x-1 transition-transform">&larr;</span> Back to Dashboard
                     </button>
 
                     {/* Scoreboard */}
-                    <div className="flex flex-col md:flex-row justify-between items-center bg-gray-900/50 rounded-2xl p-8 border border-gray-800 relative overflow-hidden">
+                    <div className="flex flex-col md:flex-row justify-between items-center bg-white rounded-2xl p-8 border border-slate-200 relative overflow-hidden shadow-sm">
                         {/* Background Glow */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-500/5 blur-3xl pointer-events-none"></div>
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-50/50 blur-3xl pointer-events-none"></div>
 
                         {/* Home Team */}
                         <div className="text-center w-full md:w-1/3 z-10">
-                            <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center text-2xl font-bold text-gray-300 mb-4 shadow-lg border border-gray-700">
+                            <div className="w-20 h-20 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-2xl font-bold text-slate-700 mb-4 shadow-sm border border-slate-200">
                                 {match.homeTeam.shortName.substring(0, 2).toUpperCase()}
                             </div>
-                            <h2 className="text-2xl font-bold tracking-tight">{match.homeTeam.name}</h2>
+                            <h2 className="text-2xl font-bold tracking-tight text-slate-900">{match.homeTeam.name}</h2>
                         </div>
 
                         {/* Score & Status */}
                         <div className="text-center w-full md:w-1/3 flex flex-col items-center my-6 md:my-0 z-10">
                             <div className={clsx(
                                 "text-5xl font-black tracking-tight mb-2",
-                                isLive ? "text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400" : "text-white"
+                                isLive ? "text-transparent bg-clip-text bg-gradient-to-b from-slate-900 to-slate-600" : "text-slate-900"
                             )}>
                                 {match.score?.home ?? 0} - {match.score?.away ?? 0}
                             </div>
                             <div className={clsx(
                                 "text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border",
-                                isLive ? "bg-red-500/20 text-red-500 border-red-500/30 animate-pulse" : "bg-gray-700/50 text-gray-400 border-gray-700"
+                                isLive ? "bg-red-50 text-red-600 border-red-200 animate-pulse" : "bg-slate-100 text-slate-500 border-slate-200"
                             )}>
                                 {match.status.replace('_', ' ')}
                                 {(isLive || match.status === 'HALF_TIME') && ` • ${match.minute}'`}
@@ -127,10 +127,10 @@ const MatchDetail = () => {
 
                         {/* Away Team */}
                         <div className="text-center w-full md:w-1/3 z-10">
-                            <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center text-2xl font-bold text-gray-300 mb-4 shadow-lg border border-gray-700">
+                            <div className="w-20 h-20 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-2xl font-bold text-slate-700 mb-4 shadow-sm border border-slate-200">
                                 {match.awayTeam.shortName.substring(0, 2).toUpperCase()}
                             </div>
-                            <h2 className="text-2xl font-bold tracking-tight">{match.awayTeam.name}</h2>
+                            <h2 className="text-2xl font-bold tracking-tight text-slate-900">{match.awayTeam.name}</h2>
                         </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@ const MatchDetail = () => {
 
             <div className="container mx-auto px-4 max-w-4xl mt-8">
                 {/* Tabs */}
-                <div className="flex border-b border-gray-800 mb-8 overflow-x-auto">
+                <div className="flex border-b border-slate-200 mb-8 overflow-x-auto">
                     {['timeline', 'stats', 'chat'].map((tab) => (
                         <button
                             key={tab}
@@ -146,20 +146,20 @@ const MatchDetail = () => {
                             className={clsx(
                                 "px-8 py-4 font-medium capitalize transition-all relative whitespace-nowrap",
                                 activeTab === tab
-                                    ? "text-blue-500"
-                                    : "text-gray-400 hover:text-white"
+                                    ? "text-blue-600"
+                                    : "text-slate-500 hover:text-slate-900"
                             )}
                         >
                             {tab}
                             {activeTab === tab && (
-                                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 shadow-[0_-2px_8px_rgba(59,130,246,0.5)]"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 shadow-sm"></div>
                             )}
                         </button>
                     ))}
                 </div>
 
                 {/* Tab Content */}
-                <div className="bg-[#1e293b]/50 rounded-2xl border border-gray-800 p-6 min-h-[400px]">
+                <div className="bg-white rounded-2xl border border-slate-200 p-6 min-h-[400px] shadow-sm">
                     {activeTab === 'timeline' && (
                         <Timeline events={events} />
                     )}

@@ -12,12 +12,12 @@ const StatRow = ({ label, home, away }: { label: string; home: number; away: num
 
     return (
         <div className="mb-4">
-            <div className="flex justify-between text-sm text-gray-400 mb-1">
+            <div className="flex justify-between text-sm text-slate-500 mb-1">
                 <span>{home}</span>
                 <span>{label}</span>
                 <span>{away}</span>
             </div>
-            <div className="flex h-2 bg-gray-700 rounded overflow-hidden">
+            <div className="flex h-2 bg-slate-200 rounded overflow-hidden">
                 <div
                     style={{ width: `${homePercent}%` }}
                     className="bg-blue-500 transition-all duration-500"
@@ -37,7 +37,7 @@ const Statistics: React.FC<StatisticsProps> = ({ stats }) => {
     }
 
     return (
-        <div className="bg-gray-800 rounded-lg p-6 max-w-2xl mx-auto border border-gray-700">
+        <div className="bg-white rounded-lg p-6 max-w-2xl mx-auto border border-slate-200 shadow-sm">
             <StatRow label="Possession %" home={stats.possession.home} away={stats.possession.away} />
             <StatRow label="Shots" home={stats.shots.home} away={stats.shots.away} />
             <StatRow label="Shots on Target" home={stats.shotsOnTarget.home} away={stats.shotsOnTarget.away} />
